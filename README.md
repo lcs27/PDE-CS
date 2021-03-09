@@ -1,7 +1,7 @@
 # cours-edp
 This folder contains the important codes for the course of PDE(Partial Diffetienal Equation, fr:EDP) at *CentraleSupélec*
 ## CM
-This folder contains all of the code concerning the course, which is a work of our professor (John Cagnol)[https://github.com/cagnol/PDE]
+This folder contains all of the code concerning the course, which is a work of our professor [John Cagnol](https://github.com/cagnol/PDE)
 ## TD
 This folder contains all of the work about the TD with the subject availiable on *Edunao*.
 ## project
