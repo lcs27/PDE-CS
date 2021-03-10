@@ -15,4 +15,4 @@ jobs:
 
       - name: Run Script
         run: |
-          python3 ./project/sample_1000.py
+          python3 ./project/test.py
