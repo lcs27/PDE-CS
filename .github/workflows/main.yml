@@ -8,7 +8,6 @@ jobs:
     
     container:
       image: unifem/fenics-desktop
-      # image: junyuuuu/python-selenium-chrome:1.0.3
       
     steps:
       - uses: actions/checkout@v1
@@ -16,7 +15,7 @@ jobs:
       - name: Run Script
         run: |
           mkdir ./project/results
-          python3 ./project/test.py
+          python3 ./project/sample_1000.py
       - name: Commit files
         id: commit
         run: |
