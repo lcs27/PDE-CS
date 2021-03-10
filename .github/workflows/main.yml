@@ -172,6 +172,122 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
+  task7:
+    name: task7
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          mkdir ./project/results
+          python3 ./project/sample_1000.py --task 7
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+  task8:
+    name: task8
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          mkdir ./project/results
+          python3 ./project/sample_1000.py --task 8
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+
+  task9:
+    name: task9
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          mkdir ./project/results
+          python3 ./project/sample_1000.py --task 9
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+
+  task10:
+    name: task10
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          mkdir ./project/results
+          python3 ./project/sample_1000.py --task 10
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+  pushwork:
+    name: Push all work
+    needs: [task1,task2,task3,task4,task5,task6,task7,task8,task9,task10]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
