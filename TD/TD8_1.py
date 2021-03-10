@@ -1,3 +1,4 @@
+# This Python program contains the program for Q.VIII.2
 import numpy as np
 
 
