@@ -4,6 +4,20 @@ from fenics import *
 import matplotlib.pyplot as plt
 import numpy as np
 from mshr import *
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--task', required=True, help='The number of tasks')
+args = parser.parse_args()
+sample_Num = 20
+task_number: int = args.task
+
+    def assert_nonempty_string(s: str):
+        assert isinstance(s, str) and s
+
+    assert_nonempty_string(username)
+    assert_nonempty_string(password)
+
 
 def solve_stokes(X=10,Y=3,U0=5,phi=1,nx=100):
     '''
@@ -131,8 +145,6 @@ def calculate_force(p,mesh,boundary_subdomains,H=1):
     force = H*assemble(f)
     return force
 
-#generate 200 samples
-sample_Num = 200
 U0s = np.random.normal(5, 1, sample_Num)
 force1 = []
 max_velocity1 = []
@@ -150,12 +162,10 @@ for U in U0s:
     print(k,end=',')
     k += 1
 
-np.savetxt("./project/results/U0s.txt",U0s)
-np.savetxt("./project/results/force_U0s.txt",force1)
-np.savetxt("./project/results/max_velocity_U0s.txt",max_velocity1)
+np.savetxt("./project/results/U0s"+str(task_number)+".txt",U0s)
+np.savetxt("./project/results/force_U0s"+str(task_number)+".txt",force1)
+np.savetxt("./project/results/max_velocity_U0s"+str(task_number)+".txt",max_velocity1)
 
-#generate 50 samples
-sample_Num = 200
 Ys = np.random.normal(3, 0.5, sample_Num)
 force = []
 max_velocity = []
@@ -173,6 +183,6 @@ for Y in Ys:
     print(k,end=',')
     k += 1
 
-np.savetxt("./project/results/Ys.txt",U0s)
-np.savetxt("./project/results/force_Ys.txt",force1)
-np.savetxt("./project/results/max_velocity_Ys.txt",max_velocity1)
+np.savetxt("./project/results/Ys"+str(task_number)+".txt",U0s)
+np.savetxt("./project/results/force_Ys"+str(task_number)+".txt",force1)
+np.savetxt("./project/results/max_velocity_Ys"+str(task_number)+".txt",max_velocity1)
