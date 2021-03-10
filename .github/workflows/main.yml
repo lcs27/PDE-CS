@@ -26,11 +26,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
   task2:
     name: task2
     runs-on: ubuntu-latest
@@ -54,11 +49,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
   task3:
     name: task3
     runs-on: ubuntu-latest
@@ -82,11 +72,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
   task4:
     name: task4
     runs-on: ubuntu-latest
@@ -110,11 +95,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
   task5:
     name: task5
     runs-on: ubuntu-latest
@@ -138,11 +118,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
   task6:
     name: task6
     runs-on: ubuntu-latest
