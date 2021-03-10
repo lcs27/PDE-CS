@@ -16,8 +16,7 @@ jobs:
       - name: Run Script
         run: |
           python3 ./project/test.py
-          - name: Commit files
-      - name: commit
+      - name: Commit files
         id: commit
         run: |
           git config --local user.email "action@github.com"
