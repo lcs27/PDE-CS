@@ -1,0 +1,10 @@
+name: Run sample 1000 for edp project
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py
