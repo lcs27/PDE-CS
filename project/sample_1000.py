@@ -145,8 +145,8 @@ for U in U0s:
     u_mag=sqrt(dot(u,u))
     u_mag=project(u_mag,FunctionSpace(mesh,'P',1))
     u_array=np.array(u_mag.vector())
-    force.append(calculate_force(p,mesh,boundary_subdomains))
-    max_velocity.append(np.max(u_array))
+    force1.append(calculate_force(p,mesh,boundary_subdomains))
+    max_velocity1.append(np.max(u_array))
     print(k,end=',')
     k += 1
 
