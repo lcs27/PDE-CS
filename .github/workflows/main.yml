@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: hippylib/fenics-docker
+      image: unifem/fenics-desktop
       # image: junyuuuu/python-selenium-chrome:1.0.3
       
     steps:
