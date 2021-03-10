@@ -150,9 +150,9 @@ for U in U0s:
     print(k,end=',')
     k += 1
 
-np.savetxt("project/results/U0s.txt",U0s)
-np.savetxt("project/results/force_U0s.txt",force1)
-np.savetxt("project/results/max_velocity_U0s.txt",max_velocity1)
+np.savetxt("./project/results/U0s.txt",U0s)
+np.savetxt("./project/results/force_U0s.txt",force1)
+np.savetxt("./project/results/max_velocity_U0s.txt",max_velocity1)
 
 #generate 50 samples
 sample_Num = 200
@@ -173,6 +173,6 @@ for Y in Ys:
     print(k,end=',')
     k += 1
 
-np.savetxt("project/results/Ys.txt",U0s)
-np.savetxt("project/results/force_Ys.txt",force1)
-np.savetxt("project/results/max_velocity_Ys.txt",max_velocity1)
+np.savetxt("./project/results/Ys.txt",U0s)
+np.savetxt("./project/results/force_Ys.txt",force1)
+np.savetxt("./project/results/max_velocity_Ys.txt",max_velocity1)

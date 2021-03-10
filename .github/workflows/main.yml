@@ -15,6 +15,7 @@ jobs:
 
       - name: Run Script
         run: |
+          mkdir ./project/results
           python3 ./project/test.py
       - name: Commit files
         id: commit
