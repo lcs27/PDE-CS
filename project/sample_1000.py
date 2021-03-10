@@ -12,13 +12,6 @@ args = parser.parse_args()
 sample_Num = 20
 task_number: int = args.task
 
-    def assert_nonempty_string(s: str):
-        assert isinstance(s, str) and s
-
-    assert_nonempty_string(username)
-    assert_nonempty_string(password)
-
-
 def solve_stokes(X=10,Y=3,U0=5,phi=1,nx=100):
     '''
     The FEniCS solver used to solve this question for 
