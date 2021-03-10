@@ -1,4 +1,7 @@
 name: Run sample 1000 for edp project
+
+on: push
+
 jobs:
   report:
     runs-on: ubuntu-latest
