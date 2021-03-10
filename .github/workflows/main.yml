@@ -245,7 +245,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-
   task10:
     name: task10
     runs-on: ubuntu-latest
