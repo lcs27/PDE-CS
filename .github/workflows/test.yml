@@ -1,22 +1,28 @@
-name: Run sample 1000 for edp project
+name: Test action
 
 on: push
 
 jobs:
   task1:
-    container:
-      image: unifem/fenics-desktop
     name: task1
     runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
     steps:
       - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git pull origin ${{github.ref}}
       - name: Run Script
         run: |
           python3 ./project/test.py --task 1
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
       - name: Commit files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
           git add --all
           if [-z "$(git status --porcelain)"]; then
              echo "::set-output name=push::false"
@@ -25,9 +31,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Create Pull Request
-        run:
-          git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
@@ -40,13 +43,19 @@ jobs:
       image: unifem/fenics-desktop
     steps:
       - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git pull origin ${{github.ref}}
       - name: Run Script
         run: |
           python3 ./project/test.py --task 2
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
       - name: Commit files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
           git add --all
           if [-z "$(git status --porcelain)"]; then
              echo "::set-output name=push::false"
@@ -55,9 +64,6 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
-      - name: Create Pull Request
-        run:
-          git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
