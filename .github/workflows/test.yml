@@ -6,8 +6,6 @@ jobs:
   task1:
     name: task1
     runs-on: ubuntu-latest
-    container:
-      image: unifem/fenics-desktop
     steps:
       - uses: actions/checkout@v1
       - name: Run Script
@@ -28,7 +26,10 @@ jobs:
         shell: bash
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        run:
+          git remote -v
+          
+          git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
@@ -60,8 +61,9 @@ jobs:
       - name: Create Pull Request
         id: cpr
         run:
-            git remote -v
-            git pull origin ${{github.ref}}
+          git remote -v
+
+          git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
