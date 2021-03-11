@@ -150,12 +150,39 @@ np.savetxt("./project/results/U0s"+str(task_number)+".txt",U0s)
 np.savetxt("./project/results/force_U0s"+str(task_number)+".txt",force1)
 np.savetxt("./project/results/max_velocity_U0s"+str(task_number)+".txt",max_velocity1)
 
+############## Case 2: The influence of phi #################
+phis = np.random.normal(1, 0.25, sample_Num)
+force2 = []
+max_velocity2 = []
 
+### For each sample, calculate the velocity and pressure field
+k = 1
+for phi in phis:
+    # Get the field
+    u,p,V,Q,W,mesh,boundary_subdomains = solve_stokes(phi=phi,nx=1000)
+    
+    # Get the magnitude of velocity
+    u_mag=sqrt(dot(u,u))
+    u_mag=project(u_mag,FunctionSpace(mesh,'P',1))
+    u_array=np.array(u_mag.vector())
+    
+    # Get the force and max of velocity
+    force2.append(calculate_force(p,mesh,boundary_subdomains))
+    max_velocity2.append(np.max(u_array))
+    
+    # We can see the progression
+    print(k,end=',')
+    k += 1
 
-############## Case 2: The influence of Y #################
+    ### Save the corresponding data
+np.savetxt("./project/results/phis"+str(task_number)+".txt",phis)
+np.savetxt("./project/results/force_phis"+str(task_number)+".txt",force2)
+np.savetxt("./project/results/max_velocity_phis"+str(task_number)+".txt",max_velocity2)
+
+############## Case 3: The influence of Y #################
 Ys = np.random.normal(3, 0.5, sample_Num)
-force = []
-max_velocity = []
+force3 = []
+max_velocity3 = []
 
 ### For each sample, calculate the velocity and pressure field
 k = 1
@@ -169,8 +196,8 @@ for Y in Ys:
     u_array=np.array(u_mag.vector())
     
     # Get the force and max of velocity
-    force.append(calculate_force(p,mesh,boundary_subdomains))
-    max_velocity.append(np.max(u_array))
+    force3.append(calculate_force(p,mesh,boundary_subdomains))
+    max_velocity3.append(np.max(u_array))
     
     # We can see the progression
     print(k,end=',')
@@ -178,5 +205,5 @@ for Y in Ys:
 
     ### Save the corresponding data
 np.savetxt("./project/results/Ys"+str(task_number)+".txt",Ys)
-np.savetxt("./project/results/force_Ys"+str(task_number)+".txt",force)
-np.savetxt("./project/results/max_velocity_Ys"+str(task_number)+".txt",max_velocity)
+np.savetxt("./project/results/force_Ys"+str(task_number)+".txt",force3)
+np.savetxt("./project/results/max_velocity_Ys"+str(task_number)+".txt",max_velocity3)
