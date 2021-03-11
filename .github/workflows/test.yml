@@ -4,6 +4,8 @@ on: push
 
 jobs:
   task1:
+    container:
+      image: unifem/fenics-desktop
     name: task1
     runs-on: ubuntu-latest
     steps:
@@ -12,7 +14,6 @@ jobs:
         run: |
           python3 ./project/test.py --task 1
       - name: Commit files
-        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
@@ -25,10 +26,7 @@ jobs:
           fi
         shell: bash
       - name: Create Pull Request
-        id: cpr
         run:
-          git remote -v
-          
           git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
@@ -46,7 +44,6 @@ jobs:
         run: |
           python3 ./project/test.py --task 2
       - name: Commit files
-        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
@@ -59,10 +56,7 @@ jobs:
           fi
         shell: bash
       - name: Create Pull Request
-        id: cpr
         run:
-          git remote -v
-
           git pull origin ${{github.ref}}
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
