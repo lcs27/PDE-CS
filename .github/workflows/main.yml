@@ -1,0 +1,345 @@
+name: Run 200 sample for edp project
+
+on: push
+
+jobs:
+  task1:
+    name: task1
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 1
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task2:
+    name: task2
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 2
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task3:
+    name: task3
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 3
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task4:
+    name: task4
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+          
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 4
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task5:
+    name: task5
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 5
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task6:
+    name: task6
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 6
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task7:
+    name: task7
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 7
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task8:
+    name: task8
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 8
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task9:
+    name: task9
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 9
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task10:
+    name: task10
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create Pull Request
+        run:
+          git config --local user.email "action@github.com"
+
+          git config --local user.name "github-actions"
+
+          git pull origin ${{github.ref}}
+      - name: Run Script
+        run: |
+          python3 ./project/sample_1000.py --task 10
+      - name: Pull Request
+        run:
+          git pull origin ${{github.ref}}
+      - name: Commit files
+        run: |
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Run EDP project result" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
