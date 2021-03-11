@@ -13,7 +13,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -46,7 +48,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -79,7 +83,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -112,7 +118,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+          
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -145,7 +153,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -178,7 +188,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -211,7 +223,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -244,7 +258,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -277,7 +293,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
@@ -310,7 +328,9 @@ jobs:
       - name: Create Pull Request
         run:
           git config --local user.email "action@github.com"
+
           git config --local user.name "github-actions"
+          
           git pull origin ${{github.ref}}
       - name: Run Script
         run: |
