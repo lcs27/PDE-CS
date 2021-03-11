@@ -1,0 +1,61 @@
+name: Run sample 1000 for edp project
+
+on: push
+
+jobs:
+  task1:
+    name: task1
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          python3 ./project/test.py  --task 1
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+  task2:
+    name: task2
+    runs-on: ubuntu-latest
+    container:
+      image: unifem/fenics-desktop
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Script
+        run: |
+          python3 ./project/test.py  --task 2
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "Add changes" -a
+             echo "::set-output name=push::true"
+          fi
+        shell: bash
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
