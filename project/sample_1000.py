@@ -6,6 +6,7 @@ import numpy as np
 from mshr import *
 import argparse
 
+# To get the name of task
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', required=True, help='The number of tasks')
 args = parser.parse_args()
@@ -96,25 +97,6 @@ def solve_stokes(X=10,Y=3,U0=5,phi=1,nx=100):
     p = project(p,Q)
     return u,p,V,Q,W,mesh,boundary_subdomains
 
-def plot_field(u,mesh,tit='',labelx='',labely=''):
-    '''
-    To plot a field(scalar or vector)
-    
-    Input
-    ----------------------
-    - u, the field
-    - mesh, the mesh of the domaine
-    - tit, the title, default to be vide string
-    - labelx, the xlabel, default to be vide string
-    - labely, the ylabel, default to be vide string
-    '''
-    plt.figure()
-    plot(mesh,alpha=0.05)
-    plu=plot(u)
-    plt.colorbar(plu,fraction=0.2, pad=0.04)
-    plt.xlabel(labelx)
-    plt.ylabel(labely)
-    plt.title(tit)
 
 def calculate_force(p,mesh,boundary_subdomains,H=1):
     '''
@@ -138,44 +120,63 @@ def calculate_force(p,mesh,boundary_subdomains,H=1):
     force = H*assemble(f)
     return force
 
+
+############## Case 1: The influence of U0 #################
 U0s = np.random.normal(5, 1, sample_Num)
 force1 = []
 max_velocity1 = []
 
-#for each sample, calculate the corresponding number
+### For each sample, calculate the velocity and pressure field
 k = 1
 for U in U0s:
+    # Get the field
     u,p,V,Q,W,mesh,boundary_subdomains = solve_stokes(U0=U,nx=1000)
-
+    
+    # Get the magnitude of velocity
     u_mag=sqrt(dot(u,u))
     u_mag=project(u_mag,FunctionSpace(mesh,'P',1))
     u_array=np.array(u_mag.vector())
+    
+    # Get the force and max of velocity
     force1.append(calculate_force(p,mesh,boundary_subdomains))
     max_velocity1.append(np.max(u_array))
+    
+    # We can see the progression
     print(k,end=',')
     k += 1
-
+    
+### Save the corresponding data
 np.savetxt("./project/results/U0s"+str(task_number)+".txt",U0s)
 np.savetxt("./project/results/force_U0s"+str(task_number)+".txt",force1)
 np.savetxt("./project/results/max_velocity_U0s"+str(task_number)+".txt",max_velocity1)
 
+
+
+############## Case 2: The influence of Y #################
 Ys = np.random.normal(3, 0.5, sample_Num)
 force = []
 max_velocity = []
 
-#for each sample, calculate the corresponding number
+### For each sample, calculate the velocity and pressure field
 k = 1
 for Y in Ys:
+    # Get the field
     u,p,V,Q,W,mesh,boundary_subdomains = solve_stokes(Y=Y,nx=1000)
-
+    
+    # Get the magnitude of velocity
     u_mag=sqrt(dot(u,u))
     u_mag=project(u_mag,FunctionSpace(mesh,'P',1))
     u_array=np.array(u_mag.vector())
+    
+    # Get the force and max of velocity
     force.append(calculate_force(p,mesh,boundary_subdomains))
     max_velocity.append(np.max(u_array))
+    
+    # We can see the progression
     print(k,end=',')
     k += 1
 
-np.savetxt("./project/results/Ys"+str(task_number)+".txt",U0s)
-np.savetxt("./project/results/force_Ys"+str(task_number)+".txt",force1)
-np.savetxt("./project/results/max_velocity_Ys"+str(task_number)+".txt",max_velocity1)
+    ### Save the corresponding data
+np.savetxt("./project/results/Ys"+str(task_number)+".txt",Ys)
+np.savetxt("./project/results/force_Ys"+str(task_number)+".txt",force)
+np.savetxt("./project/results/max_velocity_Ys"+str(task_number)+".txt",max_velocity)
