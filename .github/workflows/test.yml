@@ -26,6 +26,9 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
@@ -54,6 +57,9 @@ jobs:
              echo "::set-output name=push::true"
           fi
         shell: bash
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
       - name: Push changes
         if: steps.commit.outputs.push == 'true'
         uses: ad-m/github-push-action@master
