@@ -5,4 +5,4 @@ This folder contains all of the code concerning the course, which is a work of o
 ## TD
 This folder contains all of the work about the TD with the subject availiable on *Edunao*.
 ## project
-This folder contains my work for the EDP project, with the instruction of modelling a concrete problem by an elliptic PDE. The problem modelled is **An object dropped into a water which forms a Stokes Flow**
+This folder contains my work for the EDP project, with the instruction of modelling a concrete problem by an elliptic PDE. The problem modelled is **The force applied on a stone in the Yvette river forms a Stokes Flow**
